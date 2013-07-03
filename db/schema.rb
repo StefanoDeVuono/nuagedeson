@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130703000607) do
+ActiveRecord::Schema.define(:version => 20130703163419) do
+
+  create_table "clips", :force => true do |t|
+    t.string   "link"
+    t.integer  "owner_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "comments", :force => true do |t|
     t.string   "body"
@@ -25,13 +32,6 @@ ActiveRecord::Schema.define(:version => 20130703000607) do
   create_table "likes", :force => true do |t|
     t.integer  "user_id"
     t.integer  "sound_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "sounds", :force => true do |t|
-    t.string   "file"
-    t.integer  "owner_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :sounds, foreign_key: :owner_id
+  has_many :clips, foreign_key: :owner_id
   has_many :user_comments
   has_many :comments, through: :user_comments
   has_many :likes

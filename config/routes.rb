@@ -1,6 +1,6 @@
 Nuagedeson::Application.routes.draw do
   devise_for :users do
-    resources :sounds
+    resources :clips
   end
 
   root to: "root#index"
