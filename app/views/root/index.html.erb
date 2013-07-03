@@ -1,0 +1,30 @@
+<header id="top">
+Welcome, <%= @user.email %>
+</header>
+
+
+
+<section id="main">
+  <div>
+    <% @user.sounds.each do |sound| %>
+    <li><audio id="sound">
+      <source src="<%= sound.file %>" type="audio/mpeg" />
+      <!-- <source src="song.ogg" type="audio/ogg" /> -->
+      </audio>
+    </li>
+    <% end %>
+  </div>
+  <form action="<%= sounds_url  %>" method="post" enctype="multipart/form-data">
+    <input
+    type="hidden"
+    name="authenticity_token"
+    value="<%= form_authenticity_token %>">
+
+    <label for="sound_file">File</label>
+    <input type="file" id="sound_file" name="sound[file]" accept="">
+
+   
+    <input type="submit" value="Upload">
+  </form>
+
+</section>

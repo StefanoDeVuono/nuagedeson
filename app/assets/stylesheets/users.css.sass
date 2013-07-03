@@ -1,0 +1,42 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "compass/reset"
+@import "susy"
+
+$total-columns  : 1
+$column-width   : 15em
+$gutter-width   : 1em
+$grid-padding   : $gutter-width
+
+
+//
+$font: helvetica
+$dark: black
+$l_on_dark: white
+$light: white
+$d_on_light: black
+
+
+
+body
+  font-family: $font
+
+ 
+
+=frontière($col: black, $w: 2px)
+  -webkit-box-sizing: border-box
+  -moz-box-sizing: border-box
+  box-sizing: border-box
+  border: $col solid $w
+
+header#top
+  +frontière(red)
+  background: $dark
+  color: $l_on_dark
+
+
+#main
+  +susy-grid-background
+  +container
+  +frontière

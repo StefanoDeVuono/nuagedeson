@@ -1,0 +1,8 @@
+project advice
+
+1 keep calm and carry on. it's not that big.
+2 work one feature from bottom to top, eg user login then user upload
+  grow not build
+  at every point there's a working app
+
+3 mostly rails, but user dashboard in backbone.js
