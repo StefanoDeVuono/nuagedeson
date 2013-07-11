@@ -5,16 +5,11 @@ window.Nuagedeson = {
   Routers: {},
   initialize: function() {
 
-    var tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-
-    var firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-    Nuagedeson.clips = new Nuagedeson.Collections.Clips();
+    Nuagedeson.topClips = new Nuagedeson.Collections.Clips();
+    Nuagedeson.userClips = new Nuagedeson.Collections.Clips();
 
     new Nuagedeson.Routers.Clips({
-      $rootEl: $('#clips')
+      $rootEl: $('#main')
     });
 
     Backbone.history.start();
@@ -23,4 +18,29 @@ window.Nuagedeson = {
 
 $(document).ready(function(){
   Nuagedeson.initialize();
+  // debugger
+  var setVolume = function($jq, ui){
+    // debugger
+    $jq.each(function(i, el){
+      el.volume = (ui.value) / 100;
+    });
+  }
+
+  $('.volume').slider({
+    orientation: "vertical",
+      range: "min",
+      min: 0,
+      max: 100,
+      value: 60,
+      slide: function( event, ui ) {
+        setVolume($('audio'), ui);
+      },
+      create: function(event, ui){
+        //setVolume($('audio'), ui);
+        ui.value = 50;
+      }
+  });
+  
+  setVolume($('audio'), 50);
+  
 });

@@ -8,7 +8,6 @@ gem 'rails', '3.2.13'
 gem 'pg'
 gem 'devise'
 
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -17,6 +16,7 @@ group :assets do
   gem "susy"
   gem 'compass', '>= 0.12.2'
   gem 'compass-rails', '>= 1.0.3'
+  gem 'sassy-buttons'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
@@ -24,10 +24,13 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
+
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
+
+gem 'jquery-rails'
+gem 'dropzonejs-rails'
 gem 'backbone-on-rails'
 
 # To use Jbuilder templates for JSON
@@ -38,6 +41,9 @@ gem 'backbone-on-rails'
 
 # Deploy with Capistrano
 # gem 'capistrano'
+gem 'multipart-post'
+gem "paperclip"
+gem "aws-sdk"
 
 group :development do
 

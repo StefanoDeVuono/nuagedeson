@@ -1,0 +1,274 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "compass/reset";
+@import "compass/css3/box-shadow";
+@import "compass/css3";
+@import "compass/typography/vertical_rhythm";
+@import "susy";
+@import "sassy-buttons";
+@import "font";
+
+$total-columns: 4;
+$column-width: 15em;
+$gutter-width: 1em;
+$grid-padding: $gutter-width;
+@include establish-baseline;
+
+//
+$font: helvetica;
+$base-font-size: 16px;
+$base-line-height: 24px;
+$default-rhythm-border-style: solid;
+$relative-font-sizing: true;
+$round-to-nearest-half-line: true;
+$min-line-padding: 2px;
+
+$dark: black;
+$l_on_dark: white;
+$light: white;
+$d_on_light: black;
+
+$headerHeight: 2em;
+$audioHeight: 100px;
+
+body {
+  font-family: $font;
+}
+
+@mixin frontière($col: black, $w: 2px) {
+  @include box-sizing(border-box);
+  border: $col solid $w;
+}
+
+header#top {
+  //+frontière(red)
+  @include box-sizing(border-box);
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  padding: 5px;
+  height: $headerHeight;
+  width: 100%;
+  background: $light;
+  color: $d_on_light;
+  @include single-box-shadow;
+}
+
+.heading {
+  display:inline-block;
+  margin: auto 20px;
+}
+.right-heading {
+  float: right;
+}
+.left-heading {
+  float: left; 
+}
+
+.logo, .search, .upload {
+  display:inline;
+}
+input.search {
+  vertical-align: top;
+}
+
+.icon-search {
+  cursor: pointer;
+}
+
+.icon-attach {
+  cursor: pointer;
+}
+.search-group .no-display, .upload-group .no-display {
+  @include transition-property(visibility);
+}
+.search-group:hover .no-display, .upload-group:hover .no-display{
+  display: inline;
+  visibility: visible;
+}
+
+
+.logout {
+
+}
+
+.volume-wrapper {
+  margin-right: 50px;
+  position: relative;
+  height: 1.2em;
+}
+
+.volume-up, .volume-down {
+  height: 20px;
+  width: 20px;
+  position:relative;
+  margin: 0 auto;
+  //left: 20px
+}
+
+.volume {
+  height: 100px;
+  margin: 5px;
+  width: 20px;
+  background: grey;
+  border-radius: 5px;
+  position: relative;
+  border-top: 20px solid grey;
+  border-bottom: 20px solid grey;
+}
+
+.ui-slider-range {
+  float: none;
+  position: absolute;
+  @include background-image(linear-gradient(#aaaaaa, #bbbbbb 30%, #cccccc 70%, white));
+  margin: 0 37.5%;
+  width: 25%;
+  bottom: 0;
+  border-radius: 5px;
+
+}
+
+.ui-slider-handle {
+  position: absolute;
+  text-decoration: none;
+  width: 0.75em;
+  height: 0.75em;
+  margin-bottom: -0.4em;
+  @include sassy-button-structure(36px, 24px, 0);
+  @include sassy-button-gradient("simple", #4d8ccd);
+//   &:before {
+//     @extend .icon-record-outline:before;
+//     @extend [class^="icon-"]:before;
+//     @extend [class*=" icon-"]:before;
+//   }
+  &:focus {
+    outline: none;
+  }
+}
+
+
+#main {
+  margin-top: $headerHeight;
+  @include box-sizing(border-box);
+  @include susy-grid-background;
+  @include container;
+  //+frontière
+}
+
+iframe {
+  width: 100%;
+  height: auto;
+}
+
+$comments_height: 20px;
+
+.audio_player {
+  position: relative;
+  height: $audioHeight * 1.3;
+  width: 300px;
+  padding: 0 0 $comments_height 0;
+}
+
+.audio_controls {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 50px;
+  height: $audioHeight;
+}
+
+.audio_wrapper {
+  @include box-sizing(border-box);
+  position: absolute;
+  height: $audioHeight;
+  top: 0;
+  right: 0;
+  left: 50px;
+  bottom: 0;
+  background: red;
+  audio {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .play_head {
+    position: absolute;
+    top: 0;
+    padding-left: 10px;
+    z-index: 20;
+    margin: 0;
+    width: 0;
+    height: $audioHeight;
+    .played_block {
+      background: rgba(50, 50, 50, 0.3);
+      height: $audioHeight;
+      position: absolute;
+      left: 0;
+      right: 10px;
+    }
+  }
+  .timer {
+    height: 15px;
+    background: $dark;
+    color: $l_on_dark;
+    position: absolute;
+    bottom: 50%;
+    right: 0;
+  }
+}
+
+div.comments {
+  @include box-sizing(border-box);
+  position: absolute;
+  z-index: 20;
+  height: $audioHeight / 2;
+  left: 50px;
+  top: $audioHeight / 2;
+  right: 0;
+//   background: gold;
+  border: 1px solid green;
+  div.comment {
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: 0;
+    background: green;
+    z-index: 100;
+  }
+}
+
+form.comments {
+  width: 100%;
+  height: $comments_height;
+  position: absolute;
+  @include box-sizing(border-box);
+  padding-left: 5px;
+  padding-right: 5px;
+  bottom: 0;
+  left: 0;
+  background: $dark;
+  z-index: 20;
+  input {
+    width: 100%;
+    border: none;
+    @include border-radius(5px);
+  }
+}
+
+.audio_data {
+  position: absolute;
+  bottom: 0;
+}
+
+.no-display {
+  display: none;
+  visibility: hidden;
+}
+
+.dropzone {
+  border: 1px solid red;
+  height: 400px;
+}

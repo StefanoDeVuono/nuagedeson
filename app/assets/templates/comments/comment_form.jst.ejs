@@ -1,0 +1,13 @@
+<% comments.each(function(comment){ %>
+  <div class="comment" style="left: <%= comment.get('time') * 100 %>%">
+    <%= comment.get('body') %>
+  </div>
+<% }); %>
+
+<form class="comments">
+  <input
+    class="comments"
+    type="text"
+    placeholder="Enter a comment...."
+    name="comment[body]">
+</form>

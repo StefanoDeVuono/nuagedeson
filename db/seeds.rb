@@ -8,9 +8,17 @@
 
 
 users = User.create([
-  {name: 'frank', password: 'password'},
-  {name: 'pete', password: 'password'},
-  {name: 'wigz', password: 'password'},
-  {name: 'neo', password: 'password'}
+  {email: "io@stefanodevuono.com", password: "password", name: "stefano"},
+  {email: "fon@jackfresno.ca", password: "password", name: "fon"},
+  {email: "fon.jackfresno@gmail.com", password: "password", name: "jackfresno"},
   ])
+
+
+clips = Clip.create([
+  {owner_id: 1, link_file_name: "10_New_Love_Reprise.mp3"},
+  {owner_id: 1, link_file_name: "01_The_Opening.mp3"},
+  {owner_id: 1, link_file_name: "2-11_The_Plan.mp3"}
+  ])
+
+
 

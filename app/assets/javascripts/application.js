@@ -14,7 +14,9 @@
 //= require jquery_ujs
 //= require underscore
 //= require backbone
+//= require backbone-relational
 //= require nuagedeson
+//= require dropzone
 //= require_tree ../templates
 //= require_tree ./models
 //= require_tree ./collections

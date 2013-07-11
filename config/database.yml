@@ -7,5 +7,6 @@ development:
   adapter: postgresql
   database: nuage_de_son_development
   host: nuagedeson.com
+  username: stefanodevuono
   pool: 5
   timeout: 5000

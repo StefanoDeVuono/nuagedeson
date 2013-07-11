@@ -1,0 +1,26 @@
+
+  <form method="post" action="/song.php" enctype="multipart/form-data">
+  
+  <p>MP3 File:<br />
+    <input type="file" name="mp3" /></p>
+    
+  <p>Image Width:<br />
+    <input type="text" name="width" value="500" /></p>
+    
+  <p>Image Height:<br />
+    <input type="text" name="height" value="100" /></p>
+    
+  <p>Foreground Color: <small>(HEX/HTML color code)</small><br />
+    <input type="text" name="foreground" value="#FF0000" /></p>
+    
+  <p>Background Color: (Leave blank for transparent background) <small>(HEX/HTML color code)</small><br />
+    <input type="text" name="background" value="#FFFFFF" /></p>
+    
+  <p>Draw flat-line? <input type="checkbox" name="flat" /></p>
+  
+  <p>Stereo waveform? <input type="checkbox" name="stereo" /></p>
+    
+  <p><input type="submit" value="Generate Waveform" /></p>
+  
+  </form>
+

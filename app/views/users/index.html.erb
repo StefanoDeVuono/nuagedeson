@@ -1,0 +1,37 @@
+<header id="top">
+  <div>
+    <input type="search" data-autocomplete="products/autocomplete_brand_name">
+  </div>
+
+  <div>
+    <% login = @user.name || @user.email %>
+    Welcome, <%= login %>
+  </div>
+
+  <div class="volume-wrapper">
+    <div class="volume-up icon-volume-up"></div>
+    <div class="volume"></div>
+    <div class="volume-down icon-volume-down"></div>
+  </div>
+  
+
+  <div>
+    <%= link_to('Logout', destroy_user_session_path, :method => :delete) %> 
+  </div>
+</header>
+
+<section id="main">
+  <h3>
+    Here are the most popular clips:
+  </h3>
+  <div id="clips"></div>
+
+  <div>
+    who to follow
+  </div>
+
+  <div>
+    recent activity
+  </div>
+  
+</section>

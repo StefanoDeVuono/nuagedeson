@@ -8,10 +8,12 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :clips, foreign_key: :owner_id
-  has_many :user_comments
-  has_many :comments, through: :user_comments
+  has_many :comments
   has_many :likes
   has_many :favourite_m
+
+  has_attached_file :photo,
+    s3_host_name: 's3-us-west-2.amazonaws.com'
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :login, :email, :password, :password_confirmation, :remember_me

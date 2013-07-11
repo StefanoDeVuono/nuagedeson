@@ -1,0 +1,24 @@
+<% _(clips.models).each(function(clip){ %>
+  <div class="audio_player">
+    <div class="audio_controls">
+
+    </div>
+    <div class="audio_wrapper">
+      <div class="play_head"></div>
+      <audio preload="auto">
+        <source
+          src="<%= clip.get('link_url') %>"
+          type="<%= clip.get('link_content_type') %>">
+      </audio>
+      <div class="comments">
+      </div>
+    </div>
+    <form class="comments" data="<%= clip.id %>">
+      <input
+        id="comment_<%= clip.id %>"
+        type="text"
+        placeholder="Enter a comment...."
+        name="comments[body]">
+    </form>
+  </div>
+<% }); %>

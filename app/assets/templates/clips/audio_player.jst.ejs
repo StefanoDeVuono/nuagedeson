@@ -1,0 +1,16 @@
+<div class="audio_controls">
+  <button class="play-pause icon-play" href="#"></button> 
+</div>
+<% var url = (clip.get('image_url')).replace(/\'|\(|\)/gi, "\\$&"); %>
+<div class="audio_wrapper" style="background: url(<%= url %>) 0 0/100% 100%">
+  <div class="play_head">
+    <div class="played_block"></div>
+    <div class="timer">0</div>
+  </div>
+
+  <audio preload="auto" id="audio_<%= clip.id %>">
+    <source
+      src="<%= clip.get('link_url') %>"
+      type="<%= clip.get('link_content_type') %>">
+  </audio>
+</div>
