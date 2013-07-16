@@ -1,7 +1,12 @@
 <% comments.each(function(comment){ %>
-  <div class="comment" style="left: <%= comment.get('time') * 100 %>%">
-    <%= comment.get('body') %>
+  <% var time = comment.get('time') %>
+  <% if (time) { %>
+    <div class="comment no-display" style="left: <%= comment.get('time') * 100 %>%">
+    <span class="no-display">
+      <%= comment.get('body') %>
+    </span>
   </div>
+  <% } %>
 <% }); %>
 
 <form class="comments">

@@ -1,6 +1,7 @@
 Nuagedeson.Views.CommentView =  Backbone.View.extend({
   initialize: function(options){
-    this.listenTo(this.collection,
+    
+    this.listenTo(this.collection.clip,
       'add remove change',
       this.render);
   },

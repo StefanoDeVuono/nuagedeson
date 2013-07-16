@@ -1,9 +1,8 @@
-<div>Number of Likes: <%= clip.get('favourites') %></div>
+<span class="no-of-favourites"><%= clip.get('favourites') %></span>
 <% if (clip.get('current_user_likes?')) { %>
-  <button class="unlike icon-thumbs-down"></button>
+  <span class="social-button unlike icon-thumbs-down"></span>
 <% } else { %>
-  <button class="like icon-thumbs-up"></button>
+  <span class="social-button like icon-thumbs-up"></span>
 <% } %>
-<button class="add icon-plus"></button>
-<button class="repost">repost</button>
-<button class="share icon-share"></button>
+<span class="social-button add icon-plus"></span>
+<span class="social-button share icon-share"></span>

@@ -1,0 +1,23 @@
+<div class="heading">Sign in</div>
+
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+  <div class="heading">
+    <%= f.label :login %>
+    <%= f.text_field :login, :autofocus => true %>
+  </div>
+
+  <div class="heading">
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+
+  <% if devise_mapping.rememberable? -%>
+    <div class="heading">
+      <%= f.check_box :remember_me %> <%= f.label :remember_me %>
+    </div>
+  <% end -%>
+
+  <div class="heading sign-in-button"><%= f.submit "Sign in" %></div>
+<% end %>
+
+<%= render "layouts/devise_links" %>

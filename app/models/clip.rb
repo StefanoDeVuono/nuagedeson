@@ -47,7 +47,7 @@ class Clip < ActiveRecord::Base
   end
 
   def self.make_waveform(file)
-    color = "#FF0000"
+    color = "#5A1C5C"
     url = URI.parse('http://unabellidea.com/song.php')
     res =  File.open(file) do |mp3|
       req = Net::HTTP::Post::Multipart.new url.path,
@@ -55,8 +55,7 @@ class Clip < ActiveRecord::Base
         width: 500,
         height: 100,
         foreground: color,
-        background: '' 
-      debugger
+        background: ''
       Net::HTTP.start(url.host, url.port) do |http|
         http.request(req)
       end

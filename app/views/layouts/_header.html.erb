@@ -7,39 +7,38 @@
       <div class="logo icon-music"></div>
     </div>
 
-    <div class="heading">
-      <% if user_signed_in? %>
-        <% login = user.name || user.email %>
-        Welcome, <%= login %>
-      <% else %>
-        login_form
-      <% end %>
+    <% if user_signed_in? %>
+      <div class="heading welcome">
+          <% login = user.name || user.email %>
+          Welcome, <%= login %>
+      </div>
+
+      <div class="heading search-group">
+        <div class="search icon-search"></div>
+        <input class="search no-display" type="search" data-autocomplete="products/autocomplete_brand_name" placeholder="Search...">
+      </div>
+
+      <div class="heading upload-group">
+        <div class="upload icon-attach"></div>
+        <span class="upload no-display">Upload</span>
+      </div>
+
     </div>
 
-    <div class="heading search-group">
-      <div class="search icon-search"></div>
-      <input class="search no-display" type="search" data-autocomplete="products/autocomplete_brand_name">
-    </div>
+    <div class="right-heading">
 
-    <div class="heading upload-group">
-      <div class="upload icon-attach"></div>
-      <span class="upload no-display">Upload</span>
-    </div>
+      <div class="heading logout">
+        <%= link_to('Logout', destroy_user_session_path, :method => :delete) %> 
+      </div>
 
+      <div class="volume-wrapper heading">
+        <div class="volume-icon icon-volume-up"></div>
+        <div class="volume no-display"></div>
+      </div>
   </div>
 
-  <div class="right-heading">
-
-    <div class="heading logout">
-      <%= link_to('Logout', destroy_user_session_path, :method => :delete) %> 
-    </div>
-
-    <div class="volume-wrapper heading">
-      <div class="volume-up icon-volume-up"></div>
-      <div class="volume"></div>
-      <div class="volume-down icon-volume-down"></div>
-    </div>
-
-  </div>
+  <% else %>
+    <%= render partial: "layouts/login_form" %>
+  <% end %>
   
 </header>

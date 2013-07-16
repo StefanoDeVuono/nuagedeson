@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<style>
+ #waveform {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100px;
+  //background: url('http://s3-us-west-2.amazonaws.com/nuagedeson/clips/images/000/000/016/original/01_Ain\'t_Got_No_Home.png?13734902000') 0 0/100% 100%;
+  background: blue;
+  background-size: cover;
+  clip: rect(40px, 200px, 150px, 30px);
+  border: 10px solid green;
+ }
+</style>
+<title>title</title>
+</head>
+<body>
+  <audio preload="auto" controls>
+    <source src="http://s3-us-west-2.amazonaws.com/nuagedeson/clips/links/000/000/023/original/03_Feels_Good_(12''_Party_Mix).mp3?1373567404" type="audio/mp3">
+  </audio>
+    <div id="waveform"></div>
+</body>
+<script type="text/javascript">
+  $('audio').on('canplaythrough', function(){
+    var buff = this.buffered.end(0);
+
+    console.log(buff);
+  });
+</script>
+</html>

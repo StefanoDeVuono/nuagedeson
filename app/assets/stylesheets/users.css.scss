@@ -8,6 +8,7 @@
 @import "susy";
 @import "sassy-buttons";
 @import "font";
+@import "animation";
 
 $total-columns: 4;
 $column-width: 15em;
@@ -24,13 +25,19 @@ $relative-font-sizing: true;
 $round-to-nearest-half-line: true;
 $min-line-padding: 2px;
 
-$dark: black;
-$l_on_dark: white;
-$light: white;
+$dark: #5A1C5C;
+$l_on_dark: darken(white, 10%);
+$medium: #EF90FF;
+$light: lighten(#EF90FF, 15%);
 $d_on_light: black;
 
 $headerHeight: 2em;
 $audioHeight: 100px;
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
 
 body {
   font-family: $font;
@@ -52,7 +59,7 @@ header#top {
   height: $headerHeight;
   width: 100%;
   background: $light;
-  color: $d_on_light;
+  color: rgba($d_on_light, 0.7);
   @include single-box-shadow;
 }
 
@@ -70,8 +77,12 @@ header#top {
 .logo, .search, .upload {
   display:inline;
 }
+.logo {
+  cursor: pointer;
+}
 input.search {
   vertical-align: top;
+  font-size: 1em
 }
 
 .icon-search {
@@ -83,6 +94,7 @@ input.search {
 }
 .search-group .no-display, .upload-group .no-display {
   @include transition-property(visibility);
+  @include transition-duration(2s);
 }
 .search-group:hover .no-display, .upload-group:hover .no-display{
   display: inline;
@@ -112,11 +124,11 @@ input.search {
   height: 100px;
   margin: 5px;
   width: 20px;
-  background: grey;
+  background: $light;
   border-radius: 5px;
   position: relative;
-  border-top: 20px solid grey;
-  border-bottom: 20px solid grey;
+  border-top: 20px solid $light;
+  border-bottom: 20px solid $light;
 }
 
 .ui-slider-range {
@@ -137,7 +149,7 @@ input.search {
   height: 0.75em;
   margin-bottom: -0.4em;
   @include sassy-button-structure(36px, 24px, 0);
-  @include sassy-button-gradient("simple", #4d8ccd);
+  @include sassy-button-gradient("simple", $dark);
 //   &:before {
 //     @extend .icon-record-outline:before;
 //     @extend [class^="icon-"]:before;
@@ -150,11 +162,16 @@ input.search {
 
 
 #main {
-  margin-top: $headerHeight;
+  margin-top: $headerHeight * 1.5;
   @include box-sizing(border-box);
-  @include susy-grid-background;
+  //@include susy-grid-background;
   @include container;
+  height: 100%;
+  //position: relative;
   //+frontière
+  #clips {
+    //position: absolute;
+  }
 }
 
 iframe {
@@ -166,6 +183,7 @@ $comments_height: 20px;
 
 .audio_player {
   position: relative;
+  margin: 20px 0;
   height: $audioHeight * 1.3;
   width: 300px;
   padding: 0 0 $comments_height 0;
@@ -203,7 +221,7 @@ $comments_height: 20px;
     width: 0;
     height: $audioHeight;
     .played_block {
-      background: rgba(50, 50, 50, 0.3);
+      background: rgba($medium, 0.4);
       height: $audioHeight;
       position: absolute;
       left: 0;
@@ -224,25 +242,34 @@ div.comments {
   @include box-sizing(border-box);
   position: absolute;
   z-index: 20;
-  height: $audioHeight / 2;
+  height: ($audioHeight / 2) + 25;
   left: 50px;
   top: $audioHeight / 2;
   right: 0;
-//   background: gold;
-  border: 1px solid green;
   div.comment {
     width: 10px;
+    white-space: nowrap;
+    //overflow: hidden;
+    @include adjust-font-size-to(10px);
     height: 10px;
     position: absolute;
     top: 0;
-    background: green;
+    background: rgba($light, 0.7);
     z-index: 100;
+  }
+  &:hover div.no-display {
+    display: block;
+    visibility: visible;
+    &:hover span.no-display {
+      display: block;
+      visibility: visible;
+    }
   }
 }
 
 form.comments {
   width: 100%;
-  height: $comments_height;
+  //height: $comments_height;
   position: absolute;
   @include box-sizing(border-box);
   padding-left: 5px;
@@ -255,12 +282,28 @@ form.comments {
     width: 100%;
     border: none;
     @include border-radius(5px);
+    vertical-align: middle;
   }
 }
 
 .audio_data {
+  $default-text-shadow-blur: 3px;
+  $default-text-shadow-color: rgba($dark, 0.6);
   position: absolute;
   bottom: 0;
+  [class^="icon-"]:hover:before, [class*=" icon-"]:hover:before {
+    @include single-text-shadow;
+  }
+}
+
+.no-of-favourites {
+  margin-left: 50px;
+}
+
+.social-button {
+  margin: 0 50px 0 0;
+  cursor: pointer;
+  color: $dark;
 }
 
 .no-display {
@@ -269,6 +312,66 @@ form.comments {
 }
 
 .dropzone {
-  border: 1px solid red;
+  @include sassy-button-structure(50px, 20px);
+//   @include sassy-button("simple", 5px, 19px, $light);
+  @include sassy-button-style("simple", $light);
+  @include sassy-button("simple", 20px, 36px, $light, $light, $dark);
+
+  color: $dark;
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  margin: -200px;
+ // margin-left: -50%;
   height: 400px;
+  
+  text-align: center;
+  width: 80%;
+  .dz-message span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    line-height: 400px;
+  }
+}
+.dz-progress {
+  height: 20px;
+  width: 100%;
+  .dz-upload {
+    width: 100%;
+    height: 20px;
+    display: block;
+    background: $dark;
+  }
+}
+
+
+.new_user {
+  display: inline;
+}
+
+.play-pause {
+//   @include sassy-button-structure(50px, 20px);
+//   @include sassy-button("shiny", 50px, 19px, white);
+//   @include sassy-button-style("inset", $light);
+//   padding: 0;
+  @include adjust-font-size-to(24px);
+  cursor: pointer;
+  color: $dark;
+  $default-text-shadow-blur: 3px;
+  $default-text-shadow-color: rgba($dark, 0.6);
+  position: absolute;
+  top: 25px;
+  //left: 10px;
+}
+
+.dz-preview {
+  @extend .no-display
+}
+
+.icon-spin5 {
+  @extend .animate-spin;
+  line-height: 400px;
 }

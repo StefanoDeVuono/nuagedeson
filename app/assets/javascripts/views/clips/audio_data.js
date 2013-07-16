@@ -6,8 +6,8 @@ Nuagedeson.Views.AudioDataView =  Backbone.View.extend({
   },
 
   events: {
-    'click button.like': 'addLike',
-    'click button.unlike': 'unLike'
+    'click span.like': 'addLike',
+    'click span.unlike': 'unLike'
   },
 
   tagName: 'div',

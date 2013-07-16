@@ -1,15 +1,28 @@
 Nuagedeson.Routers.Clips = Backbone.Router.extend({
 
   initialize: function(options){
+    var that = this;
     this.$rootEl = options.$rootEl;
+    $('body').on('click', 'div.icon-attach', function(){
+      that.uploader();
+    });
+
+    $('body').on('click', '.logo', function(){
+      that.index();
+    });
+
+    $('body').on('click', '.welcome', function(){
+      that.userClips();
+    });
   },
 
   routes: {
     "": "index",
     "/clips": "userClips",
-    "upload": 'uploader'
+    "upload": 'uploader',
 
   },
+
   index: function(){
     var that = this;
     Nuagedeson.topClips.fetch({
@@ -17,8 +30,7 @@ Nuagedeson.Routers.Clips = Backbone.Router.extend({
         var clipIndexView = new Nuagedeson.Views.ClipsIndex({
           collection: Nuagedeson.topClips
         });
-        that.$rootEl.html(clipIndexView.render().$el);
-        
+        that._swapView(clipIndexView);
       }
     });
   },
@@ -31,8 +43,8 @@ Nuagedeson.Routers.Clips = Backbone.Router.extend({
         var userClipsView = new Nuagedeson.Views.ClipsIndex({
           collection: Nuagedeson.userClips
         });
-        that.$rootEl.html(userClipsView.render().$el);
         
+        that._swapView(userClipsView);
       }
     });
   },
@@ -41,11 +53,25 @@ Nuagedeson.Routers.Clips = Backbone.Router.extend({
     var that = this;
     Nuagedeson.userClips.url = '/users'
     var clip = new Nuagedeson.Models.Clip();
+    
     var uploadView = new Nuagedeson.Views.Uploader({
       model: clip
     });
-    that.$rootEl.html(uploadView.render().$el);
+    this._swapView(uploadView);
     uploadView.createDropzone();
   },
+
+  uploadFile: function(e){
+    e.preventDefault();
+    console.log('h');
+  },
+
+  _swapView: function(newView){
+
+    if (this.currentView) this.currentView.remove;
+    this.currentView = newView;
+    debugger
+    this.$rootEl.html(this.currentView.render().$el);
+  }
 
 });

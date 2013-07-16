@@ -3,6 +3,7 @@ Nuagedeson::Application.routes.draw do
     resources :clips do 
       resources :comments, only: :create
     end
+    resources :users, only: :index
     resources :likes, only: :create
     delete '/likes' => 'likes#destroy'
   end
