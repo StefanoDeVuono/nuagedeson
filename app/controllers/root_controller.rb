@@ -1,6 +1,6 @@
 class RootController < ApplicationController
   def index
-    @user  = current_user
+    @user  = User.new
     @clip = Clip.new
   end
 end

@@ -30,7 +30,7 @@ Nuagedeson.Views.AudioDataView =  Backbone.View.extend({
     var that = this;
     $.ajax({
       url: '/likes',
-      data: {likes: {sound_id: that.model.id}},
+      data: {likes: {clip_id: that.model.id}},
       type: 'post',
       dataType: 'json',
       success: function(data){
@@ -44,7 +44,7 @@ Nuagedeson.Views.AudioDataView =  Backbone.View.extend({
     var that = this;
     $.ajax({
       url: '/likes',
-      data: {likes: {sound_id: that.model.id}},
+      data: {likes: {clip_id: that.model.id}},
       type: 'delete',
       dataType: 'json',
       success: function(data){

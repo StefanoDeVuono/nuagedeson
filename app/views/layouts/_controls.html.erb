@@ -1,0 +1,27 @@
+  <div class="welcome third">
+      <% login = user.name || user.email %>
+      Welcome, <%= login %>
+  </div>
+
+  <div class="third">
+    <span class="search-group">
+      <div class="search icon-search"></div>
+      <input class="search no-display"
+             type="search"
+             data-autocomplete="products/autocomplete_brand_name"
+             placeholder="Search...">
+    </span>
+    <span class="upload-group">
+      <div class="upload icon-attach"></div>
+      <span class="upload no-display">Upload</span>
+    </span>
+  </div>
+
+  <div class="third volume-wrapper">
+    <%= link_to('Logout', destroy_user_session_path,
+                method: :delete,
+                class: 'logout') %>
+    <div class="volume-icon icon-volume-up"></div>
+    <div class="volume no-display"></div>
+  </div>
+</div>

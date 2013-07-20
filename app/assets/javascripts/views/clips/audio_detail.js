@@ -41,6 +41,7 @@ Nuagedeson.Views.AudioPlayerView =  Backbone.View.extend({
   },
 
   add_comment: function(e){
+
     var that = this;
     var playPoint = e.offsetX;
     var track_pct = playPoint / this.$audioWrapper.width();
@@ -52,8 +53,9 @@ Nuagedeson.Views.AudioPlayerView =  Backbone.View.extend({
     if (track_pct < 0) return;
 
     comment.set('time', track_pct);
+    comment.set('clip_id', comment.collection.clip.id)
 
-    var $input = this.$commentBox
+    var $input = this.$commentBox;
     $input.focus();
   },
 
@@ -64,6 +66,7 @@ Nuagedeson.Views.AudioPlayerView =  Backbone.View.extend({
     debugger
     this.commentView.model.save(input.comment, {
       success: function(data){
+        debugger
         that.model.get('comments').add(data);
         that.commentView.render();
         that.$commentBox = that.$el.find('.comments input');
@@ -105,7 +108,7 @@ Nuagedeson.Views.AudioPlayerView =  Backbone.View.extend({
     that.displaySongTime(that.audio.currentTime)
     this.$playHead.animate({
       width: '+=' + remaining_dist,
-    }, remaining_time, 'linear');
+    }, remaining_time, 'linear').css('overflow', 'visible');
     setInterval(function(){
       that.displaySongTime(that.audio.currentTime)
     },1000);

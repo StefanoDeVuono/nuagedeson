@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130710075320) do
+ActiveRecord::Schema.define(:version => 20130720004042) do
 
   create_table "clips", :force => true do |t|
     t.integer  "owner_id"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(:version => 20130710075320) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.string   "title"
   end
 
   create_table "comments", :force => true do |t|
@@ -33,12 +34,12 @@ ActiveRecord::Schema.define(:version => 20130710075320) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "user_id"
-    t.integer  "sound_id"
+    t.integer  "clip_id"
   end
 
   create_table "likes", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "sound_id"
+    t.integer  "clip_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -57,6 +58,12 @@ ActiveRecord::Schema.define(:version => 20130710075320) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "name"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

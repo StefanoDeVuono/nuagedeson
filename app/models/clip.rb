@@ -1,14 +1,14 @@
 require 'net/http/post/multipart'
 
 class Clip < ActiveRecord::Base
-  attr_accessible :link, :owner_id, :likes_attributes, :link_file_name
+  attr_accessible :link, :owner_id, :likes_attributes, :link_file_name, :title
 
   attr_accessor :current_user
 
   belongs_to :user, foreign_key: :owner_id
-  has_many :likes, foreign_key: :sound_id
+  has_many :likes
   has_many :admirers, through: :likes, source: :user
-  has_many :comments, foreign_key: :sound_id
+  has_many :comments
 
   accepts_nested_attributes_for :likes
 
@@ -18,8 +18,8 @@ class Clip < ActiveRecord::Base
   has_attached_file :image,
     s3_host_name: 's3-us-west-2.amazonaws.com'
 
-  scope :top_five, joins('LEFT JOIN likes ON clips.id = likes.sound_id').
-    select('clips.*, count(likes.sound_id) as faves').
+  scope :top_five, joins('LEFT JOIN likes ON clips.id = likes.clip_id').
+    select('clips.*, count(likes.clip_id) as faves').
     group('clips.id').
     order('faves desc').
     limit(5)

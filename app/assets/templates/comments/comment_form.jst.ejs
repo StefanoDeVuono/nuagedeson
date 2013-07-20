@@ -1,10 +1,13 @@
 <% comments.each(function(comment){ %>
   <% var time = comment.get('time') %>
   <% if (time) { %>
-    <div class="comment no-display" style="left: <%= comment.get('time') * 100 %>%">
-    <span class="no-display">
+    <div
+      class="comment no-display"
+      style="left: <%= comment.get('time') * 100 %>%;
+             background: url(<%= comment.get('photo') %>) 0 0/100% 100%;">
+    <div class="comment-body no-display">
       <%= comment.get('body') %>
-    </span>
+    </div>
   </div>
   <% } %>
 <% }); %>

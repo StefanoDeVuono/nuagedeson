@@ -10,8 +10,8 @@
 @import "font";
 @import "animation";
 
-$total-columns: 4;
-$column-width: 15em;
+$total-columns: 3;
+$column-width: 20em;
 $gutter-width: 1em;
 $grid-padding: $gutter-width;
 @include establish-baseline;
@@ -62,22 +62,37 @@ header#top {
   color: rgba($d_on_light, 0.7);
   @include single-box-shadow;
 }
+.main, .cover, .heading {
+  //margin-top: $headerHeight * 1.5;
+  @include box-sizing(border-box);
+  //@include susy-grid-background;
+  @include container;
+  //height: 100%;
+  //position: relative;
+  //+frontière
+  #clips {
+    //position: absolute;
+  }
+}
+.third {
+  @include span-columns(1,3);
+  &:nth-child(3) {
+    @include span-columns(1 omega, 3);
+  }
+}
 
-.heading {
-  display:inline-block;
-  margin: auto 20px;
+.logo {
+  position: absolute;
+  top: 8px;
+  left: 5px;
 }
-.right-heading {
-  float: right;
+.icon-cloud, .icon-music {
+  display: inline;
 }
-.left-heading {
-  float: left; 
-}
-
-.logo, .search, .upload {
+.search, .upload {
   display:inline;
 }
-.logo {
+.logo, [id^="js-"] {
   cursor: pointer;
 }
 input.search {
@@ -92,18 +107,19 @@ input.search {
 .icon-attach {
   cursor: pointer;
 }
+.search-group, .upload-group {
+  display: inline-block;
+}
 .search-group .no-display, .upload-group .no-display {
   @include transition-property(visibility);
   @include transition-duration(2s);
 }
-.search-group:hover .no-display, .upload-group:hover .no-display{
+.search-group:hover .no-display, .search-group .no-display:focus, .upload-group:hover .no-display{
   display: inline;
   visibility: visible;
 }
-
-
 .logout {
-
+  float: left;
 }
 
 .volume-wrapper {
@@ -120,13 +136,17 @@ input.search {
   //left: 20px
 }
 
+.volume-icon, .volume  {
+  position: absolute;
+  right: 0;
+}
 .volume {
   height: 100px;
   margin: 5px;
   width: 20px;
   background: $light;
   border-radius: 5px;
-  position: relative;
+  top: 15px;
   border-top: 20px solid $light;
   border-bottom: 20px solid $light;
 }
@@ -161,18 +181,7 @@ input.search {
 }
 
 
-#main {
-  margin-top: $headerHeight * 1.5;
-  @include box-sizing(border-box);
-  //@include susy-grid-background;
-  @include container;
-  height: 100%;
-  //position: relative;
-  //+frontière
-  #clips {
-    //position: absolute;
-  }
-}
+
 
 iframe {
   width: 100%;
@@ -180,7 +189,15 @@ iframe {
 }
 
 $comments_height: 20px;
+#clips {
+  margin-top: 2.5em;
+}
 
+.audio_title {
+  @include adjust-font-size-to(12px);
+  color: $dark;
+  margin-left: 50px;
+}
 .audio_player {
   position: relative;
   margin: 20px 0;
@@ -212,7 +229,8 @@ $comments_height: 20px;
     top: 0;
     left: 0;
   }
-  .play_head {
+}
+.play_head {
     position: absolute;
     top: 0;
     padding-left: 10px;
@@ -235,8 +253,10 @@ $comments_height: 20px;
     position: absolute;
     bottom: 50%;
     right: 0;
+    font-size: 0.8em;
+    line-height: 15px;
+    padding: 1px;
   }
-}
 
 div.comments {
   @include box-sizing(border-box);
@@ -257,11 +277,20 @@ div.comments {
     background: rgba($light, 0.7);
     z-index: 100;
   }
-  &:hover div.no-display {
+  div.comment-body {
+    background: white;
+    position: relative;
+    top: 4px;
+    border: 1px solid $dark;
+    padding: 1px;
+    height: 10px;
+    line-height: 10px;
+  }
+  &:hover div.comment.no-display {
     display: block;
     visibility: visible;
-    &:hover span.no-display {
-      display: block;
+    &:hover div.comment-body.no-display {
+      display: inline-block;
       visibility: visible;
     }
   }
@@ -327,13 +356,22 @@ form.comments {
   
   text-align: center;
   width: 80%;
-  .dz-message span {
-    position: absolute;
-    top: 0;
-    left: 0;
+  .dz-message {
     height: 100%;
-    width: 100%;
-    line-height: 400px;
+    span {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      line-height: 400px;
+    }
+    input.inner-message {
+      @include adjust-font-size-to(24px);
+      position: relative;
+      top: 50%;
+      margin-top: -0.75em;
+    }
   }
 }
 .dz-progress {
@@ -374,4 +412,25 @@ form.comments {
 .icon-spin5 {
   @extend .animate-spin;
   line-height: 400px;
+}
+
+.cover {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  .intro {
+    width: 80%;
+    @include box-sizing(border-box);
+    padding: 20px;
+    background: $light;
+    color: $dark;
+    height: 88px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -40%;
+    margin-top: -44px;
+    border-radius: 5px;
+    border: 2px solid $dark;
+  }
 }

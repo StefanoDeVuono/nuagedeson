@@ -1,5 +1,8 @@
 Nuagedeson::Application.routes.draw do
-  devise_for :users do
+  devise_for :users,
+              controllers: {
+                omniauth_callbacks: "users/omniauth_callbacks"
+              } do
     resources :clips do 
       resources :comments, only: :create
     end

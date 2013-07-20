@@ -67,10 +67,8 @@ Nuagedeson.Routers.Clips = Backbone.Router.extend({
   },
 
   _swapView: function(newView){
-
     if (this.currentView) this.currentView.remove;
     this.currentView = newView;
-    debugger
     this.$rootEl.html(this.currentView.render().$el);
   }
 

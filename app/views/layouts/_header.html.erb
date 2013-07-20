@@ -1,44 +1,29 @@
 <header id="top">
 
-  <div class="left-heading">
-
-    <div class="heading">
-      <div class="logo icon-cloud"></div>
-      <div class="logo icon-music"></div>
-    </div>
-
-    <% if user_signed_in? %>
-      <div class="heading welcome">
-          <% login = user.name || user.email %>
-          Welcome, <%= login %>
-      </div>
-
-      <div class="heading search-group">
-        <div class="search icon-search"></div>
-        <input class="search no-display" type="search" data-autocomplete="products/autocomplete_brand_name" placeholder="Search...">
-      </div>
-
-      <div class="heading upload-group">
-        <div class="upload icon-attach"></div>
-        <span class="upload no-display">Upload</span>
-      </div>
-
-    </div>
-
-    <div class="right-heading">
-
-      <div class="heading logout">
-        <%= link_to('Logout', destroy_user_session_path, :method => :delete) %> 
-      </div>
-
-      <div class="volume-wrapper heading">
-        <div class="volume-icon icon-volume-up"></div>
-        <div class="volume no-display"></div>
-      </div>
+  <div class="logo">
+    <div class="icon-cloud"></div>
+    <div class="icon-music"></div>
   </div>
 
-  <% else %>
-    <%= render partial: "layouts/login_form" %>
-  <% end %>
+  <div class="heading">
+    <% case controller_name %>
+      <% when 'confirmations' %>
+        <div class="heading">Resend confirmation instructions</div>
+      <% when 'mailer' %>
+        <div class="heading">Welcome <%= @email %>!</div>
+      <% when 'passwords' %>
+        <%= render partial: "devise/passwords/new" %>
+      <% when 'registrations' %>
+        <%= render partial: "devise/registrations/new" %>
+      <% when 'sessions' %>
+
+        <%= render partial: "devise/sessions/new" %>
+      <% when 'unlocks' %>
+        <div class="heading">Resend unlock instructions</div>
+      <% else %>
+        <%= render partial: "layouts/controls", locals: {user: current_user}%>
+    <% end %>
+    
+  </div>
   
 </header>

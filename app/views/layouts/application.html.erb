@@ -8,9 +8,12 @@
 </head>
 <body>
   
-<%= render partial: "layouts/header", locals: { user: @user } %>
-
-<%= yield %>
+  <%= render partial: "layouts/header" %>
+  <% if current_user %>
+    <%= yield %>
+  <% else %>
+    <%= render partial: 'layouts/application_intro' %>
+  <% end %>
 
 </body>
 </html>

@@ -1,26 +1,22 @@
 var loadUI = function(){
 
-  $('#top').on('click', '.volume-wrapper', function(e){
-    //e;
+  $('#top').on('click', '.volume-icon, [id^="js-"]', function(e){
+
     $('#top').animate({
       height: '180px',
     }, function(){
-      $('.volume').removeClass('no-display');
+      $('.volume, #top form, .o-auth').removeClass('no-display');
     });
   });
 
   $('#top').on('mouseleave', function(e){
-    //e;
+
     if ( $(this).height() > 22 ) {
-      $('.volume').addClass('no-display');
+      $('.volume, #top form, .o-auth').addClass('no-display');
       $('#top').animate({
         height: '2em',
       });
     }
-  });
-
-  $('body').on('drop', '.dropzone', function(e){
-    console.log('yo');
   });
 
   var __nativeST__ = window.setTimeout;

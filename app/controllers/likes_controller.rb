@@ -1,4 +1,3 @@
-require 'debugger'
 class LikesController < ApplicationController
   def create
     @like = Like.new(params[:likes])
@@ -14,7 +13,7 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    @like = Like.find_by_user_id_and_sound_id(current_user.id, params[:likes][:sound_id])
+    @like = Like.find_by_user_id_and_clip_id(current_user.id, params[:likes][:clip_id])
     if @like.destroy
       respond_to do |f|
         f.html { render html: @like }

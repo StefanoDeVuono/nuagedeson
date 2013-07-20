@@ -19,9 +19,7 @@ window.Nuagedeson = {
 $(document).ready(function(){
   Nuagedeson.initialize();
   loadUI();
-  // debugger
   var setVolume = function($jq, ui){
-    // debugger
     $jq.each(function(i, el){
       el.volume = (ui.value) / 100;
     });
