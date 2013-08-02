@@ -48,3 +48,12 @@ gem 'multipart-post'
 gem "paperclip"
 gem "aws-sdk"
 
+group :development do
+
+# To use debugger
+  gem 'debugger'
+  gem 'binding_of_caller'
+  gem 'better_errors'
+end
+
+

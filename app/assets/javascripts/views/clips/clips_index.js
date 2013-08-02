@@ -3,7 +3,7 @@ Nuagedeson.Views.ClipsIndex = Backbone.View.extend({
   id: 'clips',
   render: function(){
     var that = this;
-
+    debugger
     this.collection.each(function(clip){
       var audioPlayer = new Nuagedeson.Views.AudioPlayerView({
         model: clip

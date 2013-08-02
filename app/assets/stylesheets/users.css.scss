@@ -61,6 +61,9 @@ header#top {
   background: $light;
   color: rgba($d_on_light, 0.7);
   @include single-box-shadow;
+  & form:active {
+    height: 180em;
+  }
 }
 .main, .cover, .heading {
   //margin-top: $headerHeight * 1.5;
@@ -194,9 +197,9 @@ $comments_height: 20px;
 }
 
 .audio_title {
-  @include adjust-font-size-to(12px);
+  @include adjust-font-size-to(11px);
   color: $dark;
-  margin-left: 50px;
+  margin-left: 0
 }
 .audio_player {
   position: relative;
@@ -413,8 +416,15 @@ form.comments {
   @extend .animate-spin;
   line-height: 400px;
 }
-
-.cover {
+#main {
+  position: absolute;
+  top: 2em;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 5px;
+}
+.content {
   height: 100%;
   width: 100%;
   position: relative;

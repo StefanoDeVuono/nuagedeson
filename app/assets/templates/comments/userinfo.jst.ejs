@@ -1,0 +1,44 @@
+<div style="background: url(<%= user.get('image') %>)">
+</div>
+
+<h3>Change password</h3>
+<label>Old password</label>
+<input type="password">
+<label>New password</label>
+<input type="password">
+<label>New password confirmation</label>
+<input type="password">
+
+<a>Explore More Music</a>
+
+<ul> Songs:
+  <% user.songs.each(function(song){ %>
+    <li><%= song.upload_date - song.name %> <a class="delete">delete</a></li>
+  <% }); %>
+</ul>
+
+<ul> Sets:
+  <% user.sets.each(function(set){ %>
+    <li><a class="play_set">play</a><%= set.upload_date - set.name %> <a class="delete">delete</a></li>
+  <% }); %>
+</ul>
+
+<script type="text/javascript">
+  var playSet = function(set){
+  // set should be an array of songs
+  // with a current_song and current_time
+  // play current_song
+  // if song_no === 0 
+  //   dont display left arrow
+  // if song_no === set.length - 1
+  //   dont display right arrow
+  // right arrow
+  //   sets current song to song_no + 1
+  //   sets current_time to 0
+  //   starts playing
+  // left arrow
+  //   sets current song to song_no - 1
+  //   sets current_time to 0
+  //   starts playing 
+  }
+</script>

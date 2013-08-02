@@ -36,6 +36,10 @@ class Clip < ActiveRecord::Base
     likes.length
   end
 
+  def name
+    self.user.name || self.user.email
+  end
+
   def image_url
     image.url
   end

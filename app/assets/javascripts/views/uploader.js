@@ -62,7 +62,7 @@ Nuagedeson.Views.Uploader = Backbone.View.extend({
     $('.dropzone .dz-message').html('<span>Your upload is complete</span>');
     
     setTimeout
-      (Nuagedeson.router._swapView.bind(Nuagedeson.router), 1000, this);
+      (Nuagedeson.mainRouter._swapView.bind(Nuagedeson.mainRouter), 1000, this);
   },
   
 });

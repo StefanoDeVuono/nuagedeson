@@ -10,7 +10,7 @@ var loadUI = function(){
   });
 
   $('#top').on('mouseleave', function(e){
-
+    if ($('#top input:focus')[0]) return false;
     if ( $(this).height() > 22 ) {
       $('.volume, #top form, .o-auth').addClass('no-display');
       $('#top').animate({
@@ -19,13 +19,13 @@ var loadUI = function(){
     }
   });
 
-  var __nativeST__ = window.setTimeout;
+  // var __nativeST__ = window.setTimeout;
 
-  window.setTimeout = function (vCallback, nDelay, argumentToPass1) {
-    var oThis = this, aArgs = Array.prototype.slice.call(arguments, 2);
-    return __nativeST__(vCallback instanceof Function ? function () {
-      vCallback.apply(oThis, aArgs);
-    } : vCallback, nDelay);
-  };
+  // window.setTimeout = function (vCallback, nDelay, argumentToPass1) {
+  //   var oThis = this, aArgs = Array.prototype.slice.call(arguments, 2);
+  //   return __nativeST__(vCallback instanceof Function ? function () {
+  //     vCallback.apply(oThis, aArgs);
+  //   } : vCallback, nDelay);
+  // };
 
 }

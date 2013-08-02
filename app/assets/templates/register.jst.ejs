@@ -1,0 +1,52 @@
+  <div class="logo">
+    <div class="icon-cloud"></div>
+    <div class="icon-music"></div>
+  </div>
+
+  <div class="heading">
+        <div class="third">
+  <p id="js-sign-up">Sign up</p>
+
+  <form accept-charset="UTF-8" action="/users" class="no-display" enctype="multipart/form-data" id="new-user" method="post">
+    <div style="margin:0;padding:0;display:inline">
+      <input name="utf8" type="hidden" value="✓">
+      <input name="authenticity_token" type="hidden" value="<%= $('meta[name="csrf-token"]').attr('content') %>">
+    </div>
+    
+
+    <div class="left">
+      <label for="user_email">Email</label>
+      <input autofocus="autofocus" id="user_email" name="user[email]" size="30" type="email" value="">
+    </div>
+
+    <div class="left">
+      <label for="user_user">Username</label>
+      <input autofocus="autofocus" id="user_name" name="user[user]" size="30" type="text" value="">
+    </div>
+
+    <div class="left">
+      <label for="user_password">Password</label>
+      <input id="user_password" name="user[password]" size="30" type="password">
+      <label for="user_password_confirmation">Password confirmation</label>
+      <input id="user_password_confirmation" name="user[password_confirmation]" size="30" type="password">
+    </div>
+
+    
+
+    <div class="left">
+      <input name="commit" type="submit" value="Sign up">
+    </div>
+</form></div>
+  <a href="/users/sign_in" id="js-login" class="third">Sign in</a>
+
+
+  <a href="/users/password/new" id="js-password" class="third">Forgot your password?</a>
+
+
+
+
+    <a href="/users/auth/facebook" class="third o-auth no-display">Sign in with Facebook</a><br>
+    <a href="/users/auth/github" class="third o-auth no-display">Sign in with Github</a><br>
+
+    
+  </div>

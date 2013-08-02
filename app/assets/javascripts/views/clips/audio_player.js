@@ -36,7 +36,7 @@ Nuagedeson.Views.AudioPlayerView =  Backbone.View.extend({
 
     that.$el.html( full_player );
     this.audioPlayer();
-
+    
     return that;
   },
 

@@ -2,7 +2,13 @@
   <div class="icon-play play-pause" href="#"></div> 
 </div>
 <% var url = (clip.get('image_url')).replace(/\'|\(|\)/gi, "\\$&"); %>
-<div class="audio_title"><%= clip.get('title') %></div>
+<div class="audio_title">
+  <%= clip.get('title') %>
+  <span>
+    uploaded by <a href="/users/<%= clip.get('name') %>">
+    <%= clip.get('name') %></a>
+  </span>
+</div>
 <div class="audio_wrapper" style="background: url(<%= url %>) 0 0/100% 100%">
   <div class="play_head">
     <div class="played_block"></div>

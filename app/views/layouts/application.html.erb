@@ -7,13 +7,22 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  
-  <%= render partial: "layouts/header" %>
-  <% if current_user %>
-    <%= yield %>
-  <% else %>
-    <%= render partial: 'layouts/application_intro' %>
-  <% end %>
+
+  <div id="main">Loading...</div>
 
 </body>
+<script type="text/javascript">
+    <% if signed_in? %>
+     (function(){
+        Nuagedeson.initialize(<%= current_user.to_json.html_safe %>);
+        if (window.location.pathname === "/_=_") {
+         Nuagedeson.mainRouter.navigate('users', {trigger: true});
+        }
+        // Nuagedeson.mainRouter.navigate('clips', {trigger: true});
+      })();
+    <% else %>
+      Nuagedeson.initialize();
+    <% end %>
+
+  </script>
 </html>

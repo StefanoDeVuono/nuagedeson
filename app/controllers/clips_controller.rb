@@ -6,11 +6,11 @@ class ClipsController < ApplicationController
     
     @clips.each {|clip| clip.current_user = current_user}
     respond_to do |f|
-      f.html { render html: @clip }
+      f.html { render "root/index" }
       f.json { render json: @clips.to_json(methods:
-        [:link_url, :comments, :favourites, :current_user_likes?, :image_url]
-      )}
-    end 
+        [:link_url, :comments, :favourites, :current_user_likes?, :image_url, :name]
+      )} 
+    end
   end
 
   def create

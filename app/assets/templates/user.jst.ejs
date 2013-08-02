@@ -1,0 +1,35 @@
+
+  <div class="logo">
+    <div class="icon-cloud"></div>
+    <div class="icon-music"></div>
+  </div>
+
+  <div class="heading">
+    <div class="welcome third">
+    <% var login = user.get('name') || user.get('email') %>
+     Welcome, <%= login %>
+    </div>
+
+    <div class="third">
+      <span class="search-group">
+        <div class="search icon-search"></div>
+        <input class="search no-display"
+               type="search"
+               data-autocomplete="products/autocomplete_brand_name"
+               placeholder="Search...">
+      </span>
+      <span class="upload-group">
+        <div class="upload icon-attach"></div>
+        <span class="upload no-display">Upload</span>
+      </span>
+    </div>
+
+    <div class="third volume-wrapper">
+      <a href="/users/sign_out" class="logout" data-method="delete" rel="nofollow">Logout</a>
+      <div class="volume-icon icon-volume-up"></div>
+      <div class="volume no-display"></div>
+    </div>
+  </div>
+    
+  </div>
+  

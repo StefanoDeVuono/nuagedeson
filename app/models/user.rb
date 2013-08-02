@@ -46,6 +46,8 @@ class User < ActiveRecord::Base
     user
   end
 
+  
+
   # def self.new_with_session(params, session)
   #   # debugger
   #   super.tap do |user|

@@ -3,21 +3,30 @@ window.Nuagedeson = {
   Collections: {},
   Views: {},
   Routers: {},
-  initialize: function() {
-
-    Nuagedeson.topClips = new Nuagedeson.Collections.Clips();
-    Nuagedeson.userClips = new Nuagedeson.Collections.Clips();
-
-    Nuagedeson.router = new Nuagedeson.Routers.Clips({
-      $rootEl: $('#main')
+  initialize: function(currentUser) {
+    
+    Nuagedeson.headRouter = new Nuagedeson.Routers.Header({
+      $rootEl: $('body'),
+      currentUser: currentUser
     });
+    Nuagedeson.mainRouter = new Nuagedeson.Routers.Main({
+      $rootEl: $('#main'),
+      currentUser: currentUser
+    });
+    if (currentUser) {
+      // Nuagedeson.topClips = new Nuagedeson.Collections.Clips();
+      // Nuagedeson.userClips = new Nuagedeson.Collections.Clips();
+    }
+    
 
-    Backbone.history.start();
+    Backbone.history.start({
+      pushState: true
+    });
   }
 };
 
 $(document).ready(function(){
-  Nuagedeson.initialize();
+ 
   loadUI();
   var setVolume = function($jq, ui){
     $jq.each(function(i, el){

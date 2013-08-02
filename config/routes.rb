@@ -2,11 +2,13 @@ Nuagedeson::Application.routes.draw do
   devise_for :users,
               controllers: {
                 omniauth_callbacks: "users/omniauth_callbacks"
-              } do
-    resources :clips do 
+              }
+  devise_scope :users do
+    resources :users, only: :index
+    resources :clips, only: [:create, :index, :update] do
       resources :comments, only: :create
     end
-    resources :users, only: :index
+    resources :test, only: :create
     resources :likes, only: :create
     delete '/likes' => 'likes#destroy'
   end

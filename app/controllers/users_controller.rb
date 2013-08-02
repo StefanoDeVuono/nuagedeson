@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     respond_to do |f|
       f.html { render html: @clip }
       f.json { render json: @clips.to_json(methods:
-        [:link_url, :comments, :favourites, :current_user_likes?, :image_url]
+        [:link_url, :comments, :favourites, :current_user_likes?, :image_url, :name]
       )}
     end 
   end
